@@ -9,5 +9,4 @@ struct Game {
     bool over = false;
 };
 
-// Declare global instance (do NOT define it here)
 extern Game game;
