@@ -1,5 +1,5 @@
-// child.cpp
-#include "child.h"
+#include "child.hpp"
+#include "../../lib.hpp"
 
 void Child::init() {
     for (auto i = 0; i < Child::moves.size(); i++) {

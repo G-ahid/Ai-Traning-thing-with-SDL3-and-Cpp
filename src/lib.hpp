@@ -1,6 +1,5 @@
 #pragma once
 #include <array>
-#include <cstdlib>
 #include <random>
 
 static std::mt19937 rng(std::random_device{}());

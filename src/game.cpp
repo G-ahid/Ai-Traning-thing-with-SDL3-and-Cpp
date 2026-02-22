@@ -1,4 +1,6 @@
-#include "game.h"
+#include "game.hpp"
+#include "player.hpp"
+#include "blocks.hpp"
 
 Player player;
 

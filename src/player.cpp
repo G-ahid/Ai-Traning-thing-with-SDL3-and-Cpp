@@ -1,4 +1,6 @@
-#include "player.h"
+#include "player.hpp"
+#include "lib.hpp"
+#include "blocks.hpp"
 
 std::array<int,4> Player::split(){
     // Used for collision

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-#include "src/ai.h"
+#include "src/ai.hpp"
 
 
 int main() {

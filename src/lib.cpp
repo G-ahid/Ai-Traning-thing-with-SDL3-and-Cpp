@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "lib.hpp"
 
 bool collision(const std::array<int,4>& p, const std::array<int,4>& b) {
     return (

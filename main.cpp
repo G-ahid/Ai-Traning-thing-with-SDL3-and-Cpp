@@ -2,8 +2,8 @@
 #include <iostream>
 #include <chrono>
 
-#include "src/game.h"
-#include "src/config.h"
+#include "src/game.hpp"
+#include "src/config.hpp"
 
 int main(int argc, char* argv[]) {
     if (!SDL_Init(SDL_INIT_VIDEO)) {

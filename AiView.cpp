@@ -5,8 +5,9 @@
 #include <vector>
 
 #include <iostream>
-#include "src/player.h"
-#include "src/config.h"
+#include "src/player.hpp"
+#include "src/config.hpp"
+#include "src/blocks.hpp"
 #include <string>
 
 int main() {

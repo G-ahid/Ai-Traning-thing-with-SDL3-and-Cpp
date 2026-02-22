@@ -1,7 +1,5 @@
-// child.h
 #include <cstdint>
 #include <array>
-#include "../../lib.h"
 
 
 struct Child {

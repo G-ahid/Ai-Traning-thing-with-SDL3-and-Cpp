@@ -1,4 +1,4 @@
-#include "blocks.h"
+#include "blocks.hpp"
 
 std::vector<std::array<int,4>> genBlocks(){
     return {

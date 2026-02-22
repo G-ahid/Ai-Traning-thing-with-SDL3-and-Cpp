@@ -1,7 +1,5 @@
-// ai.h
-#include "simulation.h"
+#include "simulation.hpp"
 #include <array>
-#include <cstddef>
 
 class AI {
     std::array<Child, 30> children;

@@ -3,9 +3,6 @@
 #include <array>
 #include <SDL3/SDL.h>
 
-#include "lib.h"
-#include "blocks.h"
-
 struct Player {
     float x = 200;
     float y = 200;

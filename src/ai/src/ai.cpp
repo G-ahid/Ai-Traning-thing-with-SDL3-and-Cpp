@@ -1,6 +1,7 @@
-//ai.cpp
-#include "ai.h"
+#include "ai.hpp"
+#include "../../lib.hpp"
 #include <array>
+#include <cstddef>
 
 void AI::init() {
     // Initialize the childen
