@@ -1,21 +1,19 @@
 #include "player.h"
 
 std::array<int,4> Player::split(){
+    // Used for collision
     return {(int)x,(int)y,(int)size,(int)size};
 }
 
-bool Player::update(double dt) {
+bool Player::update(double dt, bool left, bool right, bool jump) {
 
     if (dt > 0.05) dt = 0.05;
-
-    const bool* keys = SDL_GetKeyboardState(NULL);
-
     float oldX = x;
 
-    if (keys[SDL_SCANCODE_A])
+    if (left)
         x -= speed * dt;
 
-    if (keys[SDL_SCANCODE_D])
+    if (right)
         x += speed * dt;
 
     for (auto &block : blocks) {
@@ -25,7 +23,7 @@ bool Player::update(double dt) {
         }
     }
 
-    if (keys[SDL_SCANCODE_SPACE] && touching) {
+    if (jump && touching) {
         dy = jumpForce;
         touching = false;
     }
@@ -62,5 +60,3 @@ bool Player::update(double dt) {
 
     return false;
 }
-
-Player player;

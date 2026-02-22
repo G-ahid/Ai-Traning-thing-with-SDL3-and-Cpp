@@ -23,7 +23,5 @@ struct Player {
 
     std::array<int,4> split();
 
-    bool update(double dt);
+    bool update(double dt, bool left, bool right, bool jump);
 };
-
-extern Player player;

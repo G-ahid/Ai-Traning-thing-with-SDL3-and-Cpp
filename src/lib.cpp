@@ -8,3 +8,8 @@ bool collision(const std::array<int,4>& p, const std::array<int,4>& b) {
         p[1] + p[3] > b[1]     // p.bottom > b.top
     );
 }
+
+int randomInt(int min, int max) {
+    std::uniform_int_distribution<int> dist(min, max);
+    return dist(rng);
+}

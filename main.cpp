@@ -2,7 +2,7 @@
 #include <iostream>
 #include <chrono>
 
-#include "src/loop.cpp"
+#include "src/game.h"
 #include "src/config.h"
 
 int main(int argc, char* argv[]) {
@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
             loop(dt, renderer, &game);
         }
     }
-
+    std::cout << "GAME OVER\n";
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
