@@ -9,12 +9,15 @@ float evaluateChild(const Child& child) {
     for (int i = 0; i < child.moves.size(); i++) {
         // if he dies
         if (player.update(0.016, child.moves[i] == 1,child.moves[i] == 2, child.moves[i] == 3)) {
-            return score - 1000;
+            return score /* - 1000*/;
         }
         if (last_x < player.x) {
             score += 500;
         } else {
             score -= 50;
+        }
+        if (!player.touching) {
+            score -= 1000;
         }
 
 
