@@ -52,7 +52,17 @@ As this was an early SDL3 project, the structure and architecture are still evol
 
 ## Building
 
-Use the provided build scripts:
+### Use the provided build scripts:
 
+* for only the game `./compile.sh`
+* for the ai training :
+    ```bash
+        cd src/ai/
+        ./compile
+    ```
+* to view the ai results `./_AiView_.compile.sh`
+
+### Or Compile everything into `bash/`
 ```bash
-./compile.sh
+./AllCompile.sh
+```
