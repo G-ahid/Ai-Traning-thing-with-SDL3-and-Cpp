@@ -1,5 +1,5 @@
 #include "simulation.hpp"
-#include "../../player.hpp"
+#include "../../game/src/player.hpp"
 
 float evaluateChild(const Child& child) {
     float score = 10.0f;

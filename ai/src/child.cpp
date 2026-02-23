@@ -1,5 +1,5 @@
 #include "child.hpp"
-#include "../../lib.hpp"
+#include "../../game/src/lib.hpp"
 
 void Child::init() {
     for (size_t i = 0; i < Child::moves.size(); i++) {

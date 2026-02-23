@@ -5,9 +5,9 @@
 #include <vector>
 
 #include <iostream>
-#include "src/player.hpp"
-#include "src/config.hpp"
-#include "src/blocks.hpp"
+#include "../game/src/player.hpp"
+#include "../game/src/config.hpp"
+#include "../game/src/blocks.hpp"
 #include <string>
 
 int main() {

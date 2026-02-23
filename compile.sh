@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 set -e
+cd "$(dirname "$0")"
+mkdir -p bin
 
 total_start=$(date +%s)
 
 echo "----------------------------"
 echo "Compiling the game [1/3]"
 start=$(date +%s)
-
-./compile.sh
+cd game/
+./game.compile.sh
+mv game.x86_64 ../bin/
 
 end=$(date +%s)
 echo "Compliled in $((end - start))s"
@@ -15,29 +18,26 @@ echo "----------------------------"
 
 echo "Compiling the AI view [2/3]"
 start=$(date +%s)
-
-./_AiView_.compile.sh
+cd ../ai
+./AiView.compile.sh
+mv AiView.x86_64 ../bin/
 
 end=$(date +%s)
 echo "Compliled in $((end - start))s"
 echo "----------------------------"
 
-mkdir -p bin
-mv game.x86_64 bin/
-mv AiView.x86_64 bin/
-
 echo "Compiling the AI training program [3/3]"
-cd src/ai/
 
 start=$(date +%s)
 
-./compile.sh
+./ai.compile.sh
+mv ai.x86_64 ../bin/
+
 
 end=$(date +%s)
 echo "Compliled in $((end - start))s"
 echo "----------------------------"
 
-mv ai.x86_64 ../../bin/
 
 total_end=$(date +%s)
 

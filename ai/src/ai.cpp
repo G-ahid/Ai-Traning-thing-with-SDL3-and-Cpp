@@ -1,5 +1,5 @@
 #include "ai.hpp"
-#include "../../lib.hpp"
+#include "../../game/src/lib.hpp"
 #include <array>
 #include <cstddef>
 
