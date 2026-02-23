@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-g++ -std=c++20 AiView.cpp src/*.cpp -o AiView.x86_64 $(pkg-config --cflags --libs sdl3)
+g++ -std=c++20 -Wall -Wextra AiView.cpp src/*.cpp -o AiView.x86_64 $(pkg-config --cflags --libs sdl3)

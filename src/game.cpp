@@ -34,7 +34,7 @@ void loop(float dt, SDL_Renderer* r, Game* game) {
     // --- Draw blocks ---
     SDL_SetRenderDrawColor(r, 0, 255, 0, 255);
 
-    for (int i = 0; i < blocks.size(); i++) {
+    for (size_t i = 0; i < blocks.size(); i++) {
 
         SDL_FRect blockRect = {
             blocks[i][0] - cameraX,

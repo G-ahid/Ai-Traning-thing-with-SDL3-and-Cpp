@@ -5,7 +5,7 @@
 #include "src/game.hpp"
 #include "src/config.hpp"
 
-int main(int argc, char* argv[]) {
+int main() {
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         std::cout << "SDL Init failed: " << SDL_GetError() << "\n";
         return 1;

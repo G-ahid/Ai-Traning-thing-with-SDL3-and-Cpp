@@ -43,7 +43,7 @@ int main() {
     if (lineChoice != "*") {
         int index = std::stoi(lineChoice) - 1;
         // If outof bounds
-        if (index < 0 || index >= lines.size()) {
+        if (index < 0 || (unsigned int)index >= lines.size()) {
             std::cout << "Invalid index\n";
             return 1;
         }
@@ -74,8 +74,8 @@ int main() {
     // Making a vector of {bool,bool,bool} -> {right,left,jump}
     std::vector<std::vector<std::array<bool, 3>>> moves(children.size());
 
-    for (int i = 0; i < children.size(); i++) {
-        for (int m = 0; m < children[i].size(); m++) {
+    for (size_t i = 0; i < children.size(); i++) {
+        for (size_t m = 0; m < children[i].size(); m++) {
             int value = children[i][m];
             if (value == 1) {
                 moves[i].push_back({true,false,false});
@@ -117,7 +117,7 @@ int main() {
     bool running = true;
     double dt = 0.0;
     std::chrono::time_point<std::chrono::high_resolution_clock> last = std::chrono::high_resolution_clock::now();
-    for (int move = 0; move < moves[0].size(); move++) {
+    for (size_t move = 0; move < moves[0].size(); move++) {
         std::chrono::time_point<std::chrono::high_resolution_clock> now = std::chrono::high_resolution_clock::now();
         dt = std::chrono::duration<double>(now - last).count();
         last = now;
@@ -132,7 +132,7 @@ int main() {
             break;
         
         // Now we're actually doing the shit
-        for (int i = 0; i < players.size(); i++) {
+        for (size_t i = 0; i < players.size(); i++) {
             players[i].update(dt, moves[i][move][0], moves[i][move][1], moves[i][move][2]);
         }
 
@@ -163,7 +163,7 @@ int main() {
         // Draw the map
         SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 
-        for (int i = 0; i < blocks.size(); i++) {
+        for (size_t i = 0; i < blocks.size(); i++) {
 
             SDL_FRect blockRect = {
                 blocks[i][0] - cameraX,
@@ -176,7 +176,7 @@ int main() {
         }
 
         // Draw Players !!!!
-        for (int i = 0; i < players.size(); i++) {
+        for (size_t i = 0; i < players.size(); i++) {
             // Set the Color
             SDL_SetRenderDrawColor(renderer,
                 players[i].color[0],

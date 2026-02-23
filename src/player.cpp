@@ -34,8 +34,7 @@ bool Player::update(double dt, bool left, bool right, bool jump) {
 
     if (dy > terminalVelocity)
         dy = terminalVelocity;
-
-    float oldY = y;
+    
     y += dy * dt;
 
     touching = false;

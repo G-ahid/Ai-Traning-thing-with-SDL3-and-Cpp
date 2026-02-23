@@ -2,7 +2,7 @@
 #include "../../lib.hpp"
 
 void Child::init() {
-    for (auto i = 0; i < Child::moves.size(); i++) {
+    for (size_t i = 0; i < Child::moves.size(); i++) {
         moves[i] = randomInt(1,3);
     }
 }
