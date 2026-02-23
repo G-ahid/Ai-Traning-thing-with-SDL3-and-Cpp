@@ -2,3 +2,4 @@ game.x86_64
 **/result.data
 ai.x86_64
 bin/
+build/
