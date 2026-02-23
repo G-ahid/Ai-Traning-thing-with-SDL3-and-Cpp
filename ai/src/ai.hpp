@@ -1,10 +1,17 @@
-#include "simulation.hpp"
-#include <array>
+#include "child.hpp"
+#include <vector>
 
 class AI {
-    std::array<Child, 30> children;
-
     public:
+        AI(size_t numchildren, size_t moves, size_t mutations, size_t winners);
         void init();
-        std::array<Child, 30> evolve();
+        std::vector<Child> evolve();
+
+    private:
+        size_t NumberOfMoves;
+        size_t NumberOfMutations;
+        size_t NumberOfChildren;
+        size_t NumberOfWinner;
+
+        std::vector<Child> children;
 };

@@ -18,10 +18,6 @@ float evaluateChild(const Child& child) {
         } else {
             score -= 50;
         }
-        if (!player.touching) {
-            score -= 1000;
-        }
-
 
         last_x = player.x;
         score -= i * 50;

@@ -1,27 +1,63 @@
 #include <fstream>
 #include <iostream>
+#include <memory>
 #include <string>
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
 
 #include "src/ai.hpp"
 
-
 int main() {
+    std::unique_ptr<AI> mainAI;
+    // Loading the json
+    std::ifstream configFile("config.json");
+    if (!configFile.is_open()) {
+        std::cout << "No config file found, making config.json...\n";
+        json defaultConfig;
+
+        defaultConfig["NumberOfChildren"]  = 30;
+        defaultConfig["NumberOfMoves"]     = 36000;
+        defaultConfig["NumberOfMutations"] = 100;
+        defaultConfig["NumberOfWinner"]    = 3;
+
+        std::ofstream out("config.json");
+        out << defaultConfig.dump(4);
+
+        std::cout << "Config file created. Restart the program.\n";
+        return 0;
+
+    } else {
+        // initializing a new AI system with config.json
+        json config;
+        configFile >> config;
+        int NumberOfChildren  = config.value("NumberOfChildren", 30);
+        int NumberOfMoves     = config.value("NumberOfMoves", 36000);
+        int NumberOfMutations = config.value("NumberOfMutations", 100);
+        int NumberOfWinners   = config.value("NumberOfWinners", 3);
+
+        mainAI = std::make_unique<AI>(
+            NumberOfChildren,
+            NumberOfMoves,
+            NumberOfMutations,
+            NumberOfWinners
+        );
+    }
+    mainAI->init();
+
+
     double Generations;
     std::cout << "Input how many Generations do you want to simulate : ";
     std::cin >> Generations;
-    
-    // initializing a new AI system
-    AI mainAI;
-    mainAI.init();
+
     // Evolving it
     for (int i = 0; i < Generations - 1; i++) {
-        mainAI.evolve();
+        mainAI->evolve();
     }
 
-    std::array<Child, 30> result = mainAI.evolve();
+    auto result = mainAI->evolve();
     // Saving the Result
     std::ofstream save("result.data");
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < result.size() ; i++) {
         std::string line;
         line += std::to_string(result[i].fitness);
         line += " | {";

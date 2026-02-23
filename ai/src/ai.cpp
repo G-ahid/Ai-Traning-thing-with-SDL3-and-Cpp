@@ -1,7 +1,26 @@
 #include "ai.hpp"
 #include "../../game/src/lib.hpp"
-#include <array>
+#include "simulation.hpp"
+#include "child.hpp"
+#include <vector>
 #include <cstddef>
+
+AI::AI(size_t numchildren,
+       size_t moves,
+       size_t mutations,
+       size_t winners)
+{
+    NumberOfChildren = numchildren;
+    NumberOfMoves = moves;
+    NumberOfMutations = mutations;
+    NumberOfWinner = winners;
+
+    children.reserve(NumberOfChildren);
+
+    for (size_t i = 0; i < NumberOfChildren; i++) {
+        children.emplace_back(NumberOfMoves, NumberOfMutations);
+    }
+}
 
 void AI::init() {
     // Initialize the childen
@@ -9,20 +28,21 @@ void AI::init() {
         children[i].init();
     }
 }
-std::array<Child, 30> AI::evolve() {
+std::vector<Child> AI::evolve() {
     // Giving each Child a score
     for (size_t i = 0; i < children.size() ; i++) {
         children[i].fitness = evaluateChild(children[i]);
     }
 
     // Choosing the top 3
-    Child winners[3];
+    std::vector<Child> winners;
+    winners.reserve(3);
     for (int i = 0; i < 3; i++) {
 
         int index = 0;
         Child* winner = &children[0];
 
-        for (int j = 1; j < 30; j++) {
+        for (size_t j = 1; j < children.size(); j++) {
 
             if (children[j].fitness > winner->fitness) {
                 winner = &children[j];
@@ -30,7 +50,7 @@ std::array<Child, 30> AI::evolve() {
             }
         }
 
-        winners[i] = *winner;
+        winners.push_back(*winner);
 
         // Removing winner from future selection
         children[index].fitness = -1e9;

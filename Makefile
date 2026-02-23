@@ -1,7 +1,7 @@
 # Makefile - builds game, AiView and ai, places binaries in bin/
 # Usage:
 #   make            # build everything
-#   make -j4        # build in parallel
+#   make -j4        # build in parallel 4 threads
 #   make game       # build only game
 #   make aiview     # build only AiView
 #   make ai         # build only ai
