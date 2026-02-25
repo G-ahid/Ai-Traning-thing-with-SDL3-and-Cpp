@@ -15,10 +15,10 @@ int main() {
     std::vector<std::string> lines;
     // Getting the filename
     std::string filename;
-    std::cout << "Result filename : ";
+    std::cout << "Result filename (empty -> result.aig) : ";
     std::getline(std::cin, filename);
     if (filename.empty()) {
-        filename = "result.data";
+        filename = "result.aig";
     }
     // Loading the file
     std::ifstream data(filename);
@@ -35,10 +35,12 @@ int main() {
     
     // Loading either all lines or just one
     std::cout << "Found " << lines.size() << " lines.\n";
-    std::cout << "Enter index (1 - " << lines.size() << ") or * for all: ";
+    std::cout << "Enter index (1 - " << lines.size() << ") or * for all (empty -> *): ";
 
     std::string lineChoice;
-    std::cin >> lineChoice;
+    std::getline(std::cin, lineChoice);
+    if (lineChoice.empty())
+        lineChoice = "*";
     // If not all lines
     if (lineChoice != "*") {
         int index = std::stoi(lineChoice) - 1;

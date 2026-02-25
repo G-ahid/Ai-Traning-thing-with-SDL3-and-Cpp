@@ -36,8 +36,8 @@ std::vector<Child> AI::evolve() {
 
     // Choosing the top 3
     std::vector<Child> winners;
-    winners.reserve(3);
-    for (int i = 0; i < 3; i++) {
+    winners.reserve(NumberOfWinner);
+    for (size_t i = 0; i < NumberOfWinner; i++) {
 
         int index = 0;
         Child* winner = &children[0];
@@ -67,7 +67,7 @@ std::vector<Child> AI::evolve() {
         children[i] = winners[parentIndex];
 
         // Mutate baby slightly
-        children[i].mutate(1);
+        children[i].mutate(NumberOfMutations);
     }
     return children;
 }

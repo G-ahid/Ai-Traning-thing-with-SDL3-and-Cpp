@@ -44,20 +44,28 @@ int main() {
     }
     mainAI->init();
 
-
-    double Generations;
+    // Getting Inputs
+    std::string savename;
+    std::string RawGenerations;
     std::cout << "Input how many Generations do you want to simulate : ";
-    std::cin >> Generations;
+    std::getline(std::cin, RawGenerations);
+    double Generations = std::stoi(RawGenerations);
+    
+    std::cout << "Enter save file name(empty -> 'result') : ";
+    std::getline(std::cin, savename);
+    if (savename.empty()) {
+        savename = "result";
+    }
 
     // Evolving it
-    for (int i = 0; i < Generations - 1; i++) {
+    for (int i = 0; i < Generations; i++) {
         mainAI->evolve();
     }
 
     auto result = mainAI->evolve();
     // Saving the Result
-    std::ofstream save("result.data");
-    for (int i = 0; i < result.size() ; i++) {
+    std::ofstream save(savename + ".aig");
+    for (size_t i = 0; i < result.size() ; i++) {
         std::string line;
         line += std::to_string(result[i].fitness);
         line += " | {";

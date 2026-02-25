@@ -3,7 +3,6 @@
 
 float evaluateChild(const Child& child) {
     float score = 10.0f;
-    
     //1. Make a copy of the player
     Player player;
     //2. Go through child.moves one by one
